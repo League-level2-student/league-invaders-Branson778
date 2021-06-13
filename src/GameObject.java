@@ -1,3 +1,5 @@
+import java.awt.Color;
+import java.awt.Graphics;
 
 public class GameObject {
 	int x;
@@ -14,7 +16,4 @@ public class GameObject {
 		this.height = height;
 	}
 
-	void update() {
-
-	}
 }
