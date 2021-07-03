@@ -20,7 +20,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	Font noteFont = new Font("Arail", Font.PLAIN, 24);
 	Timer frameDraw;
 	Timer alienSpawn;
-	Rocketship rocketship1 = new Rocketship(250, 300, 50, 50);
+	Rocketship rocketship1 = new Rocketship(250, 400, 50, 50);
 	ObjectManager obm = new ObjectManager(rocketship1);
 	public static BufferedImage image;
 	public static boolean needImage = true;
@@ -53,11 +53,12 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		obm.update();
 		if (rocketship1.isActive == false) {
 			currentState = END;
+			
 		}
 	}
 
 	void updateEndState() {
-		stopGame();
+		
 	}
 
 	void loadImage(String imageFile) {
@@ -106,6 +107,11 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	}
 
 	void startGame() {
+		rocketship1 = new Rocketship(250, 400, 50, 50);
+		obm.rocketship = rocketship1;
+		obm.aliens.clear();
+		obm.projectiles.clear();
+		obm.score = 0;
 		alienSpawn = new Timer(1000, obm);
 		alienSpawn.start();
 		rocketship1.isActive = true;
@@ -113,6 +119,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 
 	void stopGame() {
 		alienSpawn.stop();
+		
 		
 	}
 
@@ -125,7 +132,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		} else if (currentState == END) {
 			updateEndState();
 		}
-		System.out.println("action");
+		//System.out.println("action");
 		repaint();
 	}
 
@@ -141,19 +148,19 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 			}
 		}
 		if (e.getKeyCode() == KeyEvent.VK_UP && rocketship1.y > 0) {
-			System.out.println("UP");
+			//System.out.println("UP");
 			rocketship1.up();
 		}
 		if (e.getKeyCode() == KeyEvent.VK_DOWN && rocketship1.y < LeagueInvaders.HEIGHT - rocketship1.height) {
-			System.out.println("DOWN");
+			//System.out.println("DOWN");
 			rocketship1.down();
 		}
 		if (e.getKeyCode() == KeyEvent.VK_LEFT && rocketship1.x > 0) {
-			System.out.println("LEFT");
+			//System.out.println("LEFT");
 			rocketship1.left();
 		}
 		if (e.getKeyCode() == KeyEvent.VK_RIGHT && rocketship1.x < LeagueInvaders.WIDTH - rocketship1.width) {
-			System.out.println("RIGHT");
+			//System.out.println("RIGHT");
 			rocketship1.right();
 		}
 		if (e.getKeyCode() == KeyEvent.VK_SPACE) {

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class ObjectManager implements ActionListener {
-	Rocketship rocketship = new Rocketship(250, 300, 50, 50);
+	Rocketship rocketship;
 	Random random = new Random();
 	int score = 0;
 	ArrayList<Projectile> projectiles = new ArrayList<Projectile>();
